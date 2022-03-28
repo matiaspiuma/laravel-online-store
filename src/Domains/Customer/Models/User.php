@@ -8,6 +8,7 @@ use Database\Factories\UserFactory;
 use Domains\Shared\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,6 +42,22 @@ final class User extends Authenticatable
         return $this->hasMany(
             Address::class,
             'user_id'
+        );
+    }
+
+    public function defaultBillingAddress(): BelongsTo
+    {
+        return $this->belongsTo(
+            Address::class,
+            'billing_address_id'
+        );
+    }
+
+    public function defaultShippinggAddress(): BelongsTo
+    {
+        return $this->belongsTo(
+            Address::class,
+            'shipping_address_id'
         );
     }
 
