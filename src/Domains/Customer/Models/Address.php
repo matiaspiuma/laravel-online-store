@@ -43,6 +43,6 @@ final class Address extends Model
 
     protected static function newFactory(): Factory
     {
-        return new AddressFactory();
+        return AddressFactory::new();
     }
 }
