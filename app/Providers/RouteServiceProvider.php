@@ -10,28 +10,18 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * The path to the "home" route for your application.
-     *
-     * This is used by Laravel authentication to redirect users after login.
-     *
-     * @var string
-     */
+    /** @var string */
     public const HOME = '/home';
 
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::prefix('api')
+            Route::prefix('api/v1')
+                ->as('api:v1:')
                 ->middleware('api')
-                ->group(base_path('routes/api.php'));
+                ->group(base_path('routes/api/v1.php'));
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
