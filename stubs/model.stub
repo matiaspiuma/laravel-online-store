@@ -6,8 +6,15 @@ namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class {{ class }} extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
+    /** @var array */
+    protected $fillable = [
+        //
+    ];
 }
