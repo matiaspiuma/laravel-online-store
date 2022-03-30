@@ -11,6 +11,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class Variant extends Model
@@ -37,6 +38,14 @@ final class Variant extends Model
         'is_active' => 'boolean',
         'shippable' => 'boolean',
     ];
+
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(
+            Product::class,
+            'product_id',
+        );
+    }
 
     public function newEloquentBuilder($query): Builder
     {
