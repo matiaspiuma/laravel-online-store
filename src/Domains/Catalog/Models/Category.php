@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Domains\Catalog\Models;
 
-use CategoryBuilder;
 use Database\Factories\CategoryFactory;
+use Domains\Catalog\Models\Builders\CategoryBuilder;
 use Domains\Shared\Models\Concerns\HasUuid;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;

@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Domains\Catalog\Models;
 
-use Database\Factories\RangeFactory;
-use Domains\Catalog\Models\Builders\RangeBuilder;
+use Database\Factories\VariantFactory;
+use Domains\Catalog\Models\Builders\VariantBuilder;
 use Domains\Shared\Models\Concerns\HasUuid;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-final class Range extends Model
+final class Variant extends Model
 {
     use HasFactory;
     use HasUuid;
@@ -23,30 +22,29 @@ final class Range extends Model
     /** @var array */
     protected $fillable = [
         'name',
-        'description',
+        'cost',
+        'retail',
+        'height',
+        'width',
+        'length',
+        'weight',
         'is_active',
+        'shippable',
     ];
 
     /** @var array */
     protected $casts = [
         'is_active' => 'boolean',
+        'shippable' => 'boolean',
     ];
-
-    public function products(): HasMany
-    {
-        return $this->hasMany(
-            Product::class,
-            'range_id',
-        );
-    }
 
     public function newEloquentBuilder($query): Builder
     {
-        return new RangeBuilder($query);
+        return new VariantBuilder($query);
     }
 
     protected static function newFactory(): Factory
     {
-        return RangeFactory::new();
+        return VariantFactory::new();
     }
 }
