@@ -6,11 +6,13 @@ namespace Domains\Catalog\Models;
 
 use Database\Factories\ProductFactory;
 use Domains\Shared\Models\Concerns\HasUuid;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use ProductBuilder;
 
 final class Product extends Model
 {
@@ -48,6 +50,11 @@ final class Product extends Model
             Range::class,
             'range_id',
         );
+    }
+
+    public function newEloquentBuilder($query): Builder
+    {
+        return new ProductBuilder($query);
     }
 
     protected static function newFactory(): Factory
