@@ -14,6 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Domains\Shared\Models\Concerns\HasUuid;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 final class User extends Authenticatable
 {
@@ -41,6 +42,14 @@ final class User extends Authenticatable
     {
         return $this->hasMany(
             Address::class,
+            'user_id'
+        );
+    }
+
+    public function cart(): HasOne
+    {
+        return $this->hasOne(
+            Cart::class,
             'user_id'
         );
     }
