@@ -19,11 +19,11 @@ final class VariantFactory extends Factory
     public function definition(): array
     {
         $product = Product::factory()->create();
-        $cost = $this->faker->boolean
+        $cost = $this->faker->boolean()
             ? $product->cost
             : ($product->cost + $this->faker->numberBetween(100, 7500));
 
-        $shippable = $this->faker->boolean;
+        $shippable = $this->faker->boolean();
 
         return [
             'name' => $this->faker->words(3, true),
@@ -35,7 +35,7 @@ final class VariantFactory extends Factory
             'width' => $shippable ? $this->faker->numberBetween(0, 1000) : null,
             'length' => $shippable ? $this->faker->numberBetween(0, 1000) : null,
             'weight' => $shippable ? $this->faker->numberBetween(0, 1000) : null,
-            'is_active' => $this->faker->boolean,
+            'is_active' => $this->faker->boolean(),
             'shippable' => $shippable,
             'product_id' => $product,
         ];

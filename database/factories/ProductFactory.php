@@ -26,10 +26,10 @@ final class ProductFactory extends Factory
             'description' => $this->faker->paragraphs(3, true),
             'cost' => $cost,
             'retail' => ($cost / config('shop.profit_margin')),
-            'is_active' => $this->faker->boolean,
+            'is_active' => $this->faker->boolean(),
             'vat' => config('shop.vat'),
             'category_id' => Category::factory()->create(),
-            'range_id' => $this->faker->boolean ? Range::factory()->create() : null,
+            'range_id' => $this->faker->boolean() ? Range::factory()->create() : null,
         ];
     }
 }
