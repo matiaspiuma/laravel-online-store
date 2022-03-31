@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 final class {{ factory }}Factory extends Factory
 {
     /** @var string */
-    protected $model = {{ $model }}::class;
+    protected $model = {{ model }}::class;
 
     public function definition(): array
     {
