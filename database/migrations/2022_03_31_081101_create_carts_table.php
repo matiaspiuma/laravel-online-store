@@ -16,8 +16,8 @@ return new class extends Migration
             $table->uuid('uuid')->index()->unique();
 
             // attributes
-            $table->unsignedBigInteger('total')->nullable();
-            $table->unsignedBigInteger('reduction')->nullable();
+            $table->unsignedBigInteger('total')->default(0);
+            $table->unsignedBigInteger('reduction')->default(0);
             $table->string('coupon')->nullable();
 
             // state
