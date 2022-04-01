@@ -1,0 +1,18 @@
+# Event Storming
+- Product is added to Cart
+- Product Quantity is increased
+- Product Quantity is decreased
+- Product is remove from Cart
+- Coupon is added to Cart
+- Coupon is removed from Cart
+- Coupon fails to be added
+- Shipping info added to Cart
+- Billing info added to Cart
+- Payment Failed on Cart
+- Payment Successul on Cart
+- Cart Created
+- Cart Deleted
+- Order Created
+- Order Deleted
+- Cart Status Updated - need to target the actual event => Cart status changed to completed
+- Order Status Updated - need to target the actul event => Order status changed to failed
