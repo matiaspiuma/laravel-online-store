@@ -21,6 +21,7 @@ final class CartItem extends Model
 
     /** @var array */
     protected $fillable = [
+        'quantity',
         'purchasable_id',
         'purchasable_type',
     ];

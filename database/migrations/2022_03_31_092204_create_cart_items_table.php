@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('uuid')->index()->unique();
 
             // attributes
+            $table->unsignedBigInteger('quantity')->default(1);
 
             // relationships
             $table->morphs('purchasable');
