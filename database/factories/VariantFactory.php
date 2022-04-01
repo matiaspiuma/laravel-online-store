@@ -26,7 +26,7 @@ final class VariantFactory extends Factory
         $shippable = $this->faker->boolean();
 
         return [
-            'name' => $this->faker->words(3, true),
+            'title' => $this->faker->words(3, true),
             'cost' => $cost,
             'retail' => ($product->cost === $cost)
                 ? $product->retail

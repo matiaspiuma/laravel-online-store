@@ -24,7 +24,7 @@ final class Variant extends Model
 
     /** @var array */
     protected $fillable = [
-        'name',
+        'title',
         'cost',
         'retail',
         'height',

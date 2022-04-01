@@ -16,7 +16,7 @@ return new class extends Migration
             $table->uuid('uuid')->unique();
 
             // attributes
-            $table->string('name');
+            $table->string('title');
             $table->unsignedInteger('cost')->default(0);
             $table->unsignedInteger('retail')->default(0);
             $table->unsignedInteger('height')->nullable();
