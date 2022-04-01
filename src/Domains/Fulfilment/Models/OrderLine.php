@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Domains\Fulfilment\Models;
 
-use Database\Factories\OrderItemFactory;
+use Database\Factories\OrderLineFactory;
 use Domains\Shared\Models\Concerns\HasUuid;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-final class OrderItem extends Model
+final class OrderLine extends Model
 {
     use HasFactory;
     use HasUuid;
@@ -20,7 +21,18 @@ final class OrderItem extends Model
 
     /** @var array */
     protected $fillable = [
-        //
+        'title',
+        'description',
+        'cost',
+        'retail', 
+        'quantiy',
+    ];
+
+    /** @var array */
+    protected $casts = [
+        'cost' => 'integer',
+        'retail' => 'integer',
+        'quantity' => 'integer',
     ];
 
     public function order(): BelongsTo
@@ -31,8 +43,13 @@ final class OrderItem extends Model
         );
     }
 
+    public function purchasable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
     protected static function newFactory(): Factory
     {
-        return OrderItemFactory::new();
+        return OrderLineFactory::new();
     }
 }

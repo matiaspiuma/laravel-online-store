@@ -29,7 +29,7 @@ final class CartFactory extends Factory
                 : null,
             'reduction' => $useCoupon
                 ? $this->faker->numberBetween(0, 100)
-                : null,
+                : 0,
             'user_id' => User::factory()->create(),
         ];
     }

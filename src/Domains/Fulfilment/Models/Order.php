@@ -77,10 +77,10 @@ final class Order extends Model
         );
     }
 
-    public function items(): HasMany
+    public function lines(): HasMany
     {
         return $this->hasMany(
-            OrderItem::class,
+            OrderLine::class,
             'order_id'
         );
     }

@@ -7,6 +7,7 @@ namespace Domains\Catalog\Models;
 use Database\Factories\VariantFactory;
 use Domains\Catalog\Models\Builders\VariantBuilder;
 use Domains\Customer\Models\CartItem;
+use Domains\Fulfilment\Models\OrderLine;
 use Domains\Shared\Models\Concerns\HasUuid;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -53,6 +54,14 @@ final class Variant extends Model
     {
         return $this->morphMany(
             CartItem::class,
+            'purchasable',
+        );
+    }
+
+    public function orders(): MorphMany
+    {
+        return $this->morphMany(
+            OrderLine::class,
             'purchasable',
         );
     }
