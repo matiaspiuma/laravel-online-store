@@ -11,7 +11,7 @@
         "juststeveking/laravel-postcodes": "^2.0",
         "juststeveking/laravel-transporter": "^1.0",
         "laravel/framework": "^9.2",
-        "laravel/sanctum": "^2.14.1",
+        "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.7",
         "spatie/laravel-event-sourcing": "^7.2",
         "spatie/laravel-query-builder": "^5.0"

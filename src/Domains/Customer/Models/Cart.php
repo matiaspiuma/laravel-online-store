@@ -12,6 +12,7 @@ use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,6 +21,7 @@ final class Cart extends Model
 {
     use HasFactory;
     use HasUuid;
+    use Prunable;
     use SoftDeletes;
 
     /** @var array */
@@ -49,6 +51,12 @@ final class Cart extends Model
             CartItem::class,
             'cart_id',
         );
+    }
+
+    public function prunable(): Builder
+    {
+        return static::query()
+            ->where('created_at', '<=', now()->subMonth());
     }
 
     public function newEloquentBuilder($query): Builder
